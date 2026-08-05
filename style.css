@@ -46,7 +46,37 @@ text-decoration:none;
 border-radius:8px;
 transition:.3s;
 }
+.plans-box {
+    text-align: center;
+    padding: 40px;
+}
 
+.plan {
+    background: white;
+    width: 300px;
+    margin: 20px auto;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.plan h2 {
+    color: #222;
+}
+
+.plan h3 {
+    font-size: 25px;
+    color: green;
+}
+
+.plan button {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 8px;
+    background: #111;
+    color: white;
+    cursor: pointer;
+}
 .btn:hover{
 background:#00cc77;
 transform:scale(1.05);
