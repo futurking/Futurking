@@ -211,3 +211,82 @@ font-size:18px;
 }
 
 }
+/* ===== Register Page ===== */
+
+.register-page{
+    background:#0f172a;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.register-box{
+    width:100%;
+    max-width:420px;
+    background:#1e293b;
+    border-radius:20px;
+    padding:35px;
+    box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+
+.logo-area{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.logo-area h1{
+    color:#22c55e;
+    font-size:32px;
+    margin-bottom:8px;
+}
+
+.logo-area p{
+    color:#cbd5e1;
+    font-size:15px;
+}
+
+.register-box input{
+    width:100%;
+    padding:15px;
+    margin:10px 0;
+    border:none;
+    border-radius:12px;
+    background:#334155;
+    color:#fff;
+    font-size:16px;
+}
+
+.register-box input::placeholder{
+    color:#cbd5e1;
+}
+
+.register-btn{
+    width:100%;
+    margin-top:15px;
+    padding:15px;
+    background:#22c55e;
+    color:#fff;
+    border:none;
+    border-radius:12px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+.register-btn:hover{
+    background:#16a34a;
+}
+
+.login-link{
+    text-align:center;
+    margin-top:20px;
+    color:#cbd5e1;
+}
+
+.login-link a{
+    color:#22c55e;
+    text-decoration:none;
+    font-weight:bold;
+}
