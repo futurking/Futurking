@@ -474,3 +474,10 @@ a {
 .menu-card a {
   display: block;
 }
+.menu-card {
+  width: 100%;
+}
+
+.menu-card a {
+  display: contents;
+}
