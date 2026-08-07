@@ -464,3 +464,13 @@ a {
   color: white;
   font-weight: 700;
 }
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-card a {
+  display: block;
+}
