@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Deposit</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Deposit Funds</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
@@ -9,11 +11,11 @@
 
 <div class="plan-card">
 
-<h2>💳 Deposit</h2>
+<h2>💳 Deposit Funds</h2>
 
-<p>Minimum Deposit: Rs.1000</p>
+<p><strong>Minimum Deposit:</strong> Rs.1000</p>
 
-<h3>Select Package</h3>
+<h3>Select Investment Package</h3>
 
 <select>
 <option>Select Package</option>
@@ -27,15 +29,30 @@
 
 <h3>Payment Method</h3>
 
-<select>
-<option>Select Method</option>
-<option>Easypaisa</option>
-<option>JazzCash</option>
-</select>
+<label>
+<input type="radio" name="payment" checked>
+ Easypaisa
+</label>
 
-<input type="number" placeholder="Enter Amount">
+<br><br>
 
-<input type="text" placeholder="Transaction ID">
+<label>
+<input type="radio" name="payment">
+ JazzCash
+</label>
+
+<h3>Payment Number</h3>
+
+<div class="plan-card">
+<p><strong>Easypaisa:</strong> 03XXXXXXXXX</p>
+<p><strong>JazzCash:</strong> 03XXXXXXXXX</p>
+</div>
+
+<h3>Deposit Amount</h3>
+
+<input type="number" placeholder="Enter Deposit Amount">
+
+<br><br>
 
 <button>Submit Deposit</button>
 
