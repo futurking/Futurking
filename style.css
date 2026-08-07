@@ -336,3 +336,114 @@ color:#fff;
 font-size:15px;
 margin-bottom:15px;
 }
+/* ===== FUTUREKING DASHBOARD ===== */
+
+.dashboard{
+padding:20px;
+max-width:480px;
+margin:auto;
+}
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.user-box{
+background:#1d2740;
+padding:10px 18px;
+border-radius:12px;
+font-weight:600;
+}
+
+.balance-card{
+background:linear-gradient(135deg,#2563eb,#16a34a);
+padding:30px;
+border-radius:22px;
+text-align:center;
+margin-bottom:25px;
+box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+
+.balance-card h1{
+font-size:42px;
+margin:10px 0;
+}
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:15px;
+margin-bottom:25px;
+}
+
+.menu-card{
+background:#162033;
+border:1px solid rgba(255,255,255,.08);
+border-radius:18px;
+padding:25px 10px;
+text-align:center;
+font-size:32px;
+transition:.3s;
+}
+
+.menu-card h3{
+font-size:18px;
+margin-top:10px;
+}
+
+.menu-card:hover{
+transform:translateY(-5px);
+border-color:#22c55e;
+}
+
+.content-card{
+background:#162033;
+padding:20px;
+border-radius:18px;
+margin-bottom:20px;
+}
+
+.content-card h2{
+margin-bottom:15px;
+}
+
+.content-card input,
+.content-card select{
+width:100%;
+padding:14px;
+margin:10px 0;
+background:#0f172a;
+border:1px solid #2b3e50;
+border-radius:10px;
+color:#fff;
+}
+
+.main-btn{
+width:100%;
+padding:15px;
+margin-top:15px;
+background:#22c55e;
+border:none;
+border-radius:12px;
+color:#fff;
+font-size:17px;
+font-weight:bold;
+cursor:pointer;
+}
+
+.plan{
+background:#0f172a;
+padding:15px;
+border-radius:12px;
+margin-top:15px;
+border-left:4px solid #22c55e;
+}
+
+footer{
+text-align:center;
+padding:25px;
+opacity:.8;
+}
