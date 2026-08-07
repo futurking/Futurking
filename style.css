@@ -481,3 +481,13 @@ a {
 .menu-card a {
   display: contents;
 }
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 15px;
+}
+
+.menu-grid a {
+  text-decoration: none;
+  color: inherit;
+}
