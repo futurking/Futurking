@@ -71,6 +71,26 @@
             margin-top: 5px;
         }
 
+        .payment-methods {
+            display: flex;
+            gap: 10px;
+        }
+
+        .payment-methods label {
+            flex: 1;
+            margin: 0;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .payment-methods input {
+            width: auto;
+            margin-right: 6px;
+        }
+
         button {
             width: 100%;
             margin-top: 22px;
@@ -121,34 +141,76 @@
     <label for="amount">Deposit Amount</label>
     <input type="number" id="amount" value="1000" readonly>
 
-    <label for="pin">Security PIN</label>
-    <input type="password" id="pin" placeholder="Enter your PIN" maxlength="6">
+    <label>Payment Method</label>
 
-    <button onclick="confirmDeposit()">Confirm Deposit</button>
+    <div class="payment-methods">
+        <label>
+            <input type="radio" name="payment" value="easypaisa" checked>
+            Easypaisa
+        </label>
+
+        <label>
+            <input type="radio" name="payment" value="jazzcash">
+            JazzCash
+        </label>
+    </div>
+
+    <label for="accountNumber">Your Account Number</label>
+    <input
+        type="tel"
+        id="accountNumber"
+        placeholder="03XXXXXXXXX"
+        maxlength="11"
+    >
+
+    <button onclick="payNow()">Pay Now</button>
 
     <div class="message" id="message"></div>
 
 </div>
 
 <script>
+
     function updateAmount() {
         const packageAmount = document.getElementById("package").value;
         document.getElementById("amount").value = packageAmount;
     }
 
-    function confirmDeposit() {
+    function payNow() {
+
         const packageAmount = document.getElementById("package").value;
-        const pin = document.getElementById("pin").value;
+        const accountNumber = document.getElementById("accountNumber").value;
+        const paymentMethod = document.querySelector(
+            'input[name="payment"]:checked'
+        ).value;
+
         const message = document.getElementById("message");
 
-        if (pin === "") {
-            message.innerHTML = "Please enter your Security PIN.";
+        if (accountNumber.length !== 11) {
+            message.innerHTML =
+                "Please enter a valid 11-digit account number.";
             return;
         }
 
         message.innerHTML =
-            "Payment system will be connected here.";
+            "Payment request is being prepared...";
+
+        /*
+         * IMPORTANT:
+         * Actual Easypaisa/JazzCash payment will be connected here.
+         *
+         * The payment provider will handle the secure
+         * payment authorization.
+         *
+         * After successful payment verification,
+         * the selected package will be activated.
+         */
+
+        console.log("Package:", packageAmount);
+        console.log("Payment Method:", paymentMethod);
+        console.log("Account:", accountNumber);
     }
+
 </script>
 
 </body>
