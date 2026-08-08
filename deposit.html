@@ -3,19 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Deposit Funds</title>
+<title>Future King - Deposit</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<div class="plan-card">
+<div class="dashboard">
 
-<h2>💳 Deposit Funds</h2>
+<div class="deposit-card">
 
-<p><strong>Minimum Deposit:</strong> Rs.1000</p>
+<h2 class="deposit-title">💳 Deposit Funds</h2>
 
-<h3>Select Investment Package</h3>
+<div class="deposit-info">
+<h3>Minimum Deposit: Rs.1000</h3>
+<p>Select your investment package</p>
+</div>
+
+<label>Select Investment Package</label>
 
 <select>
 <option>Select Package</option>
@@ -27,47 +32,33 @@
 <option>VIP - Rs.50000</option>
 </select>
 
-<h3>Payment Method</h3>
+<label>Payment Method</label>
 
-<label>
-<input type="radio" name="payment" checked>
- Easypaisa
-</label>
+<select>
+<option>Select Payment Method</option>
+<option>Easypaisa</option>
+<option>JazzCash</option>
+</select>
 
-<br><br>
-
-<label>
-<input type="radio" name="payment">
- JazzCash
-</label>
-
-<h3>Payment Number</h3>
-
-<div class="plan-card">
+<div class="payment-box">
+<h3>Payment Details</h3>
+<p><strong>Account Name:</strong> Future King</p>
 <p><strong>Easypaisa:</strong> 03XXXXXXXXX</p>
 <p><strong>JazzCash:</strong> 03XXXXXXXXX</p>
 </div>
 
-<h3>Deposit Amount</h3>
+<label>Deposit Amount</label>
 
 <input type="number" placeholder="Enter Deposit Amount">
 
-<br><br>
+<label>Security PIN</label>
 
-</div>
-
-</body>
-</html
- <label>Security PIN</label>
-
-<input type="password" placeholder="Enter 4 Digit PIN">
+<input type="password" placeholder="Enter 4 Digit PIN" maxlength="4">
 
 <button class="submit-btn">Submit Deposit</button>
 
-<br><br>
-
-<a href="dashboard.html">
-<button class="submit-btn">⬅ Back to Dashboard</button>
+<a href="dashboard.html" style="display:block; margin-top:15px;">
+<button type="button" class="submit-btn">⬅ Back to Dashboard</button>
 </a>
 
 </div>
