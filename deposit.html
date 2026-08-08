@@ -1,173 +1,154 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Future King - Deposit</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future King - Deposit</title>
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            min-height: 100vh;
+            padding: 25px 15px;
+        }
+
+        .deposit-box {
+            max-width: 420px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.10);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        select,
+        input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        input[readonly] {
+            background: #f1f1f1;
+        }
+
+        .merchant {
+            margin-top: 18px;
+            padding: 15px;
+            background: #f5f5f5;
+            border-radius: 8px;
+        }
+
+        .merchant-title {
+            font-size: 13px;
+            color: #777;
+        }
+
+        .merchant-name {
+            font-size: 19px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #111;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="dashboard">
+<div class="deposit-box">
 
-<div class="deposit-card">
+    <h2>Deposit</h2>
 
-<h2 class="deposit-title">💳 Deposit</h2>
+    <label for="package">Select Package</label>
+    <select id="package" onchange="updateAmount()">
+        <option value="1000">1000 PKR</option>
+        <option value="5000">5000 PKR</option>
+        <option value="10000">10000 PKR</option>
+        <option value="20000">20000 PKR</option>
+        <option value="30000">30000 PKR</option>
+        <option value="40000">40000 PKR</option>
+        <option value="50000">50000 PKR</option>
+    </select>
 
-<div class="deposit-info">
-<h3>Minimum Deposit: Rs.1000</h3>
-<p>Select a package and confirm with your PIN</p>
-</div>
+    <div class="merchant">
+        <div class="merchant-title">Merchant Account</div>
+        <div class="merchant-name">Future King</div>
+    </div>
 
-<label>Select Investment Package</label>
+    <label for="amount">Deposit Amount</label>
+    <input type="number" id="amount" value="1000" readonly>
 
-<select id="package">
-<option value="">Select Package</option>
-<option value="1000">Starter - Rs.1000</option>
-<option value="5000">Silver - Rs.5000</option>
-<option value="10000">Gold - Rs.10000</option>
-<option value="20000">Diamond - Rs.20000</option>
-<option value="30000">Premium - Rs.30000</option>
-<option value="50000">VIP - Rs.50000</option>
-</select>
+    <label for="pin">Security PIN</label>
+    <input type="password" id="pin" placeholder="Enter your PIN" maxlength="6">
 
-<label>Deposit Amount</label>
+    <button onclick="confirmDeposit()">Confirm Deposit</button>
 
-<input
-type="number"
-id="amount"
-placeholder="Enter Amount"
-min="1000"
->
-
-<label>Security PIN</label>
-
-<input
-type="password"
-id="pin"
-placeholder="Enter 4 Digit PIN"
-maxlength="4"
-inputmode="numeric"
->
-
-<button class="submit-btn" onclick="makeDeposit()">
-Confirm Deposit
-</button>
-
-<p id="message" style="text-align:center;margin-top:15px;"></p>
-
-<a href="dashboard.html" style="display:block;margin-top:15px;">
-<button type="button" class="submit-btn">
-⬅ Back to Dashboard
-</button>
-</a>
-
-</div>
+    <div class="message" id="message"></div>
 
 </div>
 
 <script>
+    function updateAmount() {
+        const packageAmount = document.getElementById("package").value;
+        document.getElementById("amount").value = packageAmount;
+    }
 
-const SUPABASE_URL =
-"https://xwusgqmmiqeqwjolzzxs.supabase.co";
+    function confirmDeposit() {
+        const packageAmount = document.getElementById("package").value;
+        const pin = document.getElementById("pin").value;
+        const message = document.getElementById("message");
 
-const SUPABASE_KEY =
-"sb_publishable_-sjT4sYJXqM_sPba4DCNbw_Cyh-kSfG";
+        if (pin === "") {
+            message.innerHTML = "Please enter your Security PIN.";
+            return;
+        }
 
-const supabaseClient =
-supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
-
-async function makeDeposit(){
-
-const packageAmount =
-Number(document.getElementById("package").value);
-
-const amount =
-Number(document.getElementById("amount").value);
-
-const pin =
-document.getElementById("pin").value;
-
-const message =
-document.getElementById("message");
-
-
-if(!packageAmount){
-message.innerText =
-"Please select a package.";
-return;
-}
-
-if(amount !== packageAmount){
-message.innerText =
-"Amount must match the selected package.";
-return;
-}
-
-if(amount < 1000){
-message.innerText =
-"Minimum deposit is Rs.1000.";
-return;
-}
-
-if(!/^\d{4}$/.test(pin)){
-message.innerText =
-"Please enter a 4 digit PIN.";
-return;
-}
-
-
-message.innerText = "Processing...";
-
-
-const { data: { user } } =
-await supabaseClient.auth.getUser();
-
-
-if(!user){
-
-message.innerText =
-"Please login first.";
-
-return;
-}
-
-
-const { data, error } =
-await supabaseClient.rpc(
-"make_deposit",
-{
-p_user_id: user.id,
-p_amount: amount,
-p_pin: pin,
-p_package_amount: packageAmount
-}
-);
-
-
-if(error){
-
-message.innerText =
-error.message;
-
-return;
-}
-
-
-message.innerText =
-"✅ Deposit successful! Package activated.";
-
-setTimeout(() => {
-window.location.href =
-"dashboard.html";
-},1500);
-
-}
-
+        message.innerHTML =
+            "Payment system will be connected here.";
+    }
 </script>
 
 </body>
