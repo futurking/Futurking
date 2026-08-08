@@ -1,1 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Future King - Withdraw</title>
 
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            min-height: 100vh;
+            padding: 25px 15px;
+        }
+
+        .withdraw-box {
+            max-width: 420px;
+            margin: 30px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.10);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .balance {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .balance-title {
+            font-size: 13px;
+            color: #777;
+        }
+
+        .balance-amount {
+            font-size: 22px;
+            font-weight: bold;
+            margin-top: 5px;
+        }
+
+        label {
+            display: block;
+            margin-top: 15px;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 22px;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            background: #111;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="withdraw-box">
+
+    <h2>Withdraw</h2>
+
+    <div class="balance">
+        <div class="balance-title">Available Profit</div>
+        <div class="balance-amount">84 PKR</div>
+    </div>
+
+    <label for="amount">Withdraw Amount</label>
+    <input
+        type="number"
+        id="amount"
+        placeholder="Enter amount"
+        min="1"
+    >
+
+    <label for="accountName">Account Name</label>
+    <input
+        type="text"
+        id="accountName"
+        placeholder="Enter account name"
+    >
+
+    <label for="method">Payment Method</label>
+    <select id="method">
+        <option value="easypaisa">Easypaisa</option>
+        <option value="jazzcash">JazzCash</option>
+    </select>
+
+    <label for="accountNumber">Account Number</label>
+    <input
+        type="tel"
+        id="accountNumber"
+        placeholder="03XXXXXXXXX"
+        maxlength="11"
+    >
+
+    <button onclick="withdrawRequest()">
+        Withdraw Request Now
+    </button>
+
+    <div class="message" id="message"></div>
+
+</div>
+
+<script>
+    const availableProfit = 84;
+
+    function withdrawRequest() {
+
+        const amount = Number(
+            document.getElementById("amount").value
+        );
+
+        const accountName =
+            document.getElementById("accountName").value.trim();
+
+        const accountNumber =
+            document.getElementById("accountNumber").value.trim();
+
+        const message =
+            document.getElementById("message");
+
+        if (!amount || amount <= 0) {
+            message.innerHTML =
+                "Please enter withdrawal amount.";
+            return;
+        }
+
+        if (amount > availableProfit) {
+            message.innerHTML =
+                "Insufficient available profit.";
+            return;
+        }
+
+        if (accountName === "") {
+            message.innerHTML =
+                "Please enter account name.";
+            return;
+        }
+
+        if (accountNumber.length !== 11) {
+            message.innerHTML =
+                "Please enter a valid 11-digit account number.";
+            return;
+        }
+
+        message.innerHTML =
+            "Withdrawal request submitted. Estimated processing time: up to 30 minutes.";
+    }
+</script>
+
+</body>
+</html>
